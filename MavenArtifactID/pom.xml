@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.org.MavenGroup</groupId>
-  <artifactId>MavenArtifactID</artifactId>
+  <artifactId>TeamsHub</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>MavenArtifactID</name>
+  <name>TeamsHub</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -15,7 +15,7 @@
        <maven.compiler.source>1.6</maven.compiler.source>
     <maven.compiler.target>1.6</maven.compiler.target>
   </properties>
-
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -24,6 +24,8 @@
       <scope>test</scope>
     </dependency>
     
+
+    
     <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-java</artifactId>
@@ -31,11 +33,17 @@
     </dependency>  
     
     <dependency>
-    <groupId>org.testng</groupId>
-    <artifactId>testng</artifactId>
-    <version>7.0.0</version>
-    <scope>test</scope>
-</dependency>
+	    <groupId>org.testng</groupId>
+	    <artifactId>testng</artifactId>
+	    <version>7.0.0</version>
+	    <scope>test</scope>
+	</dependency>
 
-  </dependencies>
+	<dependency>
+		 <groupId>javax.mail</groupId>
+		 <artifactId>javax.mail-api</artifactId>
+		 <version>1.5.2</version>
+	</dependency>
+	</dependencies>
+
 </project>
