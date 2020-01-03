@@ -3,10 +3,23 @@ package com.org.MavenGroup.MavenArtifactID.Tests;
 import static org.testng.Assert.fail;
 import org.openqa.selenium.Keys;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +29,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -40,6 +55,7 @@ import com.org.MavenGroup.MavenArtifactID.webPages.LogInPage;
 import com.org.MavenGroup.MavenArtifactID.webPages.NewsLetter;
 import com.org.MavenGroup.MavenArtifactID.webPages.TeamRequests;
 
+
 import junit.framework.Assert;
 
 /**
@@ -48,33 +64,108 @@ import junit.framework.Assert;
  */
 public class SmokeTests {
 	
-	//test
 	
 	public WebDriver driver;
 	public WebDriverWait wait;
+	public List <String> list;
 	
-	
-
 	@BeforeTest
-	public void setup() throws Exception {
+	public void setup() throws Exception 
+	{
+			
 		System.setProperty("webdriver.chrome.driver", "BrowserDrivers\\chromedriver.exe");
 		driver = new ChromeDriver();
 		wait = new WebDriverWait(driver, 30);
-		// wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'COMPOSE')]")));
-		// driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
 	@BeforeClass
-	public void init() {
-		driver.get("https://teamswebstaging.azurewebsites.net");
-		driver.manage().window().maximize();
+	public void init() 
+	{
+		driver.get("https://teamsweb.azurewebsites.net/");
+		driver.manage().window().maximize();	
 	}
+	
+	
+	@DataProvider(name="combination_list")
+	public Iterator<Object[]> readData() throws IOException
+	{
+		    List<String> list=new ArrayList<String>();   
 
-	@Test(priority = 1)	
-	public void TC_01_LogIn() {
+	        FileInputStream file = new FileInputStream(new File("BrowserDrivers/input.xlsx"));
+
+	        //Create Workbook instance holding reference to .xlsx file
+	        XSSFWorkbook workbook = new XSSFWorkbook(file);
+
+	        //Get first/desired sheet from the workbook
+	        XSSFSheet sheet = workbook.getSheetAt(0);
+
+	        //Iterate through each rows one by one
+	        Iterator<Row> rowIterator = sheet.iterator();
+	       
+	        while (rowIterator.hasNext())
+	        {
+	            Row row = rowIterator.next();
+	            
+	            //For each row, iterate through all the columns
+	            Iterator<Cell> cellIterator = row.cellIterator();
+
+	            while (cellIterator.hasNext()) 
+	            {
+	            	
+	                Cell cell = cellIterator.next();
+		                if(cell.getColumnIndex()==0)
+		                continue;
+		                else
+		                {
+		                //Check the cell type and format accordingly
+			                switch (cell.getCellType()) 
+			                {
+			                    case NUMERIC:
+			                        //System.out.print(cell.getNumericCellValue() + "\t");
+			                        break;
+			                    case STRING:
+			                       // System.out.print(cell.getStringCellValue() + "\t");
+			                        list.add(cell.getStringCellValue());
+			                        break;
+			                }
+		                }	            	           		
+	            }
+	        }
+	        
+	        int size_combination =list.size();
+	        for(int i=0;i<size_combination;i++)
+	        {
+	        	System.out.println(list.get(i));
+	        }
+	        
+	        String s1 = (String)  list.get(0);
+	        String s2 = (String)  list.get(1);
+	        String s3 = (String)  list.get(2);
+	        
+	        List<Map<String,String>> lom = new ArrayList<Map<String,String>>();
+	      
+	        Map<String,String> map1 = new HashMap<String,String>();
+
+	        map1.put("URL",s1);
+	        map1.put("username",s2);
+	        map1.put("password",s3);
+	       
+	        lom.add(map1); 
+	            
+	        Collection<Object[]> dp = new ArrayList<Object[]>();
+	        for(Map<String,String> map:lom)
+	        {
+	            dp.add(new Object[]{map});
+	        }
+	        
+	        return dp.iterator();
+	}
+	
+	@Test(priority = 1, dataProvider="combination_list")
+	public void TC_01_LogIn(Map<String,String> map) {
 
 		System.out.println("---------------------------------------------------------");
-
+	
 		LogInPage LogIn = new LogInPage(driver, wait);
 
 		LogIn.clickLogInButtonHome();
@@ -86,9 +177,10 @@ public class SmokeTests {
 			driver.switchTo().window(winHandle);
 		}
 
-		LogIn.typeUserName("teamsadmin1@cyclotrondev.com");
+		
+		LogIn.typeUserName(map.get("username"));
 		LogIn.clickLogInButton();
-		LogIn.typePassword("Metro@may");
+		LogIn.typePassword(map.get("password"));
 		LogIn.clickLogInButton();
 		LogIn.clickLogInButton();
 
@@ -107,8 +199,11 @@ public class SmokeTests {
 			Assert.fail("Title didn't match");
 		System.out.println("---------------------------------------------------------");
 
+
 	}
 
+
+ 
 	@Test(priority = 2)
 	public void TC_02_Team_Request() throws InterruptedException {
 
@@ -116,9 +211,9 @@ public class SmokeTests {
 
 		createT.clickCreateTeamButton();
 		createT.typeOwnersPeoplePicker("kunal");
-		createT.typeDisplayName("Automation Team 30");
+		createT.typeDisplayName("Automation Team ID_12");
 		createT.typeDescription("This is sample team Request");
-		createT.typeAliasName("Automation Team 30");
+		createT.typeAliasName("Automation Team ID_12");
 		// createT.clickOwnerSelection();
 
 		Thread.sleep(12000);
@@ -141,7 +236,7 @@ public class SmokeTests {
 		System.out.println("TC_03_Approve_Request Result: ");
 				
 		//approve.TeamRequestSection();
-		driver.get("https://teamswebstaging.azurewebsites.net/#TeamRequests");		
+		driver.get("https://teamsweb.azurewebsites.net/#TeamRequests");		
 		Thread.sleep(3000);
 
 		JavascriptExecutor jse1 = (JavascriptExecutor) driver;
@@ -162,7 +257,7 @@ public class SmokeTests {
 
 		Thread.sleep(4000);
 		
-		driver.get("https://teamswebstaging.azurewebsites.net");
+		driver.get("https://teamsweb.azurewebsites.net");
 		
 		HomePage homep = new HomePage(driver, wait);
 
@@ -240,13 +335,12 @@ public class SmokeTests {
 		else
 			Assert.fail("Hub not found");
 		System.out.println("---------------------------------------------------------");
-
 	}
 
 	@Test(priority = 7)
 	public void TC_07_CheckHub_Data() throws InterruptedException {
 		Thread.sleep(4000);
-		driver.get("https://teamswebstaging.azurewebsites.net/#MyHubs/AccountHub");
+		driver.get("https://teamsweb.azurewebsites.net/#MyHubs/AccountHub");
 
 		Thread.sleep(10000);
 
@@ -386,11 +480,12 @@ public class SmokeTests {
 		System.out.println("---------------------------------------------------------");
 	}
 
-	
 
 	@AfterTest
 	public void terminateBrowser() {
-		// driver.close();
+		 driver.close();
 	}
+	
+	 
 
 }

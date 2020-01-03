@@ -2,64 +2,71 @@
 <testng-results ignored="0" total="10" passed="10" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2019-12-23T15:58:23 IST" name="Default suite" finished-at="2019-12-23T16:01:50 IST" duration-ms="206505">
+  <suite started-at="2020-01-03T15:54:33 IST" name="Command line suite" finished-at="2020-01-03T15:57:37 IST" duration-ms="184117">
     <groups>
     </groups>
-    <test started-at="2019-12-23T15:58:23 IST" name="Default test" finished-at="2019-12-23T16:01:50 IST" duration-ms="206505">
+    <test started-at="2020-01-03T15:54:33 IST" name="Command line test" finished-at="2020-01-03T15:57:37 IST" duration-ms="184117">
       <class name="com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@ec756bd]" started-at="2019-12-23T15:58:23 IST" name="setup" finished-at="2019-12-23T15:58:30 IST" duration-ms="7054" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@6fc6f14e]" started-at="2020-01-03T15:54:33 IST" name="setup" finished-at="2020-01-03T15:54:40 IST" duration-ms="6735" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method is-config="true" signature="init()[pri:0, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@ec756bd]" started-at="2019-12-23T15:58:30 IST" name="init" finished-at="2019-12-23T15:58:41 IST" duration-ms="10919" status="PASS">
+        <test-method is-config="true" signature="init()[pri:0, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@6fc6f14e]" started-at="2020-01-03T15:54:40 IST" name="init" finished-at="2020-01-03T15:54:48 IST" duration-ms="7676" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method signature="TC_01_LogIn()[pri:1, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@ec756bd]" started-at="2019-12-23T15:58:41 IST" name="TC_01_LogIn" finished-at="2019-12-23T15:59:02 IST" duration-ms="21225" status="PASS">
+        <test-method signature="TC_01_LogIn(java.util.Map)[pri:1, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@6fc6f14e]" started-at="2020-01-03T15:54:48 IST" name="TC_01_LogIn" data-provider="combination_list" finished-at="2020-01-03T15:55:02 IST" duration-ms="13870" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{password=Metro@may, URL=https://teamswebstaging.azurewebsites.net, username=teamsadmin1@cyclotrondev.com}]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_01_LogIn -->
-        <test-method signature="TC_02_Team_Request()[pri:2, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@ec756bd]" started-at="2019-12-23T15:59:02 IST" name="TC_02_Team_Request" finished-at="2019-12-23T15:59:31 IST" duration-ms="28850" status="PASS">
+        <test-method signature="TC_02_Team_Request()[pri:2, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@6fc6f14e]" started-at="2020-01-03T15:55:02 IST" name="TC_02_Team_Request" finished-at="2020-01-03T15:55:31 IST" duration-ms="28399" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_02_Team_Request -->
-        <test-method signature="TC_03_Approve_Request()[pri:3, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@ec756bd]" started-at="2019-12-23T15:59:31 IST" name="TC_03_Approve_Request" finished-at="2019-12-23T15:59:41 IST" duration-ms="9571" status="PASS">
+        <test-method signature="TC_03_Approve_Request()[pri:3, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@6fc6f14e]" started-at="2020-01-03T15:55:31 IST" name="TC_03_Approve_Request" finished-at="2020-01-03T15:55:40 IST" duration-ms="9443" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_03_Approve_Request -->
-        <test-method signature="TC_04_Search()[pri:4, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@ec756bd]" started-at="2019-12-23T15:59:41 IST" name="TC_04_Search" finished-at="2019-12-23T15:59:59 IST" duration-ms="18050" status="PASS">
+        <test-method signature="TC_04_Search()[pri:4, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@6fc6f14e]" started-at="2020-01-03T15:55:40 IST" name="TC_04_Search" finished-at="2020-01-03T15:55:59 IST" duration-ms="18663" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_04_Search -->
-        <test-method signature="TC_05_Mark_As_A_Favorite()[pri:5, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@ec756bd]" started-at="2019-12-23T15:59:59 IST" name="TC_05_Mark_As_A_Favorite" finished-at="2019-12-23T16:00:09 IST" duration-ms="10279" status="PASS">
+        <test-method signature="TC_05_Mark_As_A_Favorite()[pri:5, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@6fc6f14e]" started-at="2020-01-03T15:55:59 IST" name="TC_05_Mark_As_A_Favorite" finished-at="2020-01-03T15:56:09 IST" duration-ms="10174" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_05_Mark_As_A_Favorite -->
-        <test-method signature="TC_06_Save_Hub()[pri:6, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@ec756bd]" started-at="2019-12-23T16:00:09 IST" name="TC_06_Save_Hub" finished-at="2019-12-23T16:00:38 IST" duration-ms="28387" status="PASS">
+        <test-method signature="TC_06_Save_Hub()[pri:6, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@6fc6f14e]" started-at="2020-01-03T15:56:09 IST" name="TC_06_Save_Hub" finished-at="2020-01-03T15:56:36 IST" duration-ms="27242" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_06_Save_Hub -->
-        <test-method signature="TC_07_CheckHub_Data()[pri:7, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@ec756bd]" started-at="2019-12-23T16:00:38 IST" name="TC_07_CheckHub_Data" finished-at="2019-12-23T16:00:57 IST" duration-ms="19081" status="PASS">
+        <test-method signature="TC_07_CheckHub_Data()[pri:7, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@6fc6f14e]" started-at="2020-01-03T15:56:36 IST" name="TC_07_CheckHub_Data" finished-at="2020-01-03T15:56:55 IST" duration-ms="18860" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_07_CheckHub_Data -->
-        <test-method signature="TC_08_Send_NewsLetter()[pri:8, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@ec756bd]" started-at="2019-12-23T16:00:57 IST" name="TC_08_Send_NewsLetter" finished-at="2019-12-23T16:01:20 IST" duration-ms="23745" status="PASS">
+        <test-method signature="TC_08_Send_NewsLetter()[pri:8, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@6fc6f14e]" started-at="2020-01-03T15:56:55 IST" name="TC_08_Send_NewsLetter" finished-at="2020-01-03T15:57:18 IST" duration-ms="23186" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_08_Send_NewsLetter -->
-        <test-method signature="TC_09_Send_Feedback()[pri:9, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@ec756bd]" started-at="2019-12-23T16:01:20 IST" name="TC_09_Send_Feedback" finished-at="2019-12-23T16:01:31 IST" duration-ms="10249" status="PASS">
+        <test-method signature="TC_09_Send_Feedback()[pri:9, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@6fc6f14e]" started-at="2020-01-03T15:57:18 IST" name="TC_09_Send_Feedback" finished-at="2020-01-03T15:57:28 IST" duration-ms="9774" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_09_Send_Feedback -->
-        <test-method signature="TC_10_Check_NewsLetter()[pri:10, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@ec756bd]" started-at="2019-12-23T16:01:31 IST" name="TC_10_Check_NewsLetter" finished-at="2019-12-23T16:01:50 IST" duration-ms="18990" status="PASS">
+        <test-method signature="TC_10_Check_NewsLetter()[pri:10, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@6fc6f14e]" started-at="2020-01-03T15:57:28 IST" name="TC_10_Check_NewsLetter" finished-at="2020-01-03T15:57:37 IST" duration-ms="9218" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC_10_Check_NewsLetter -->
-        <test-method is-config="true" signature="terminateBrowser()[pri:0, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@ec756bd]" started-at="2019-12-23T16:01:50 IST" name="terminateBrowser" finished-at="2019-12-23T16:01:50 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="terminateBrowser()[pri:0, instance:com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests@6fc6f14e]" started-at="2020-01-03T15:57:37 IST" name="terminateBrowser" finished-at="2020-01-03T15:57:37 IST" duration-ms="100" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- terminateBrowser -->
       </class> <!-- com.org.MavenGroup.MavenArtifactID.Tests.SmokeTests -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- Command line test -->
+  </suite> <!-- Command line suite -->
 </testng-results>
